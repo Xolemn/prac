@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yes or No</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f16477;
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+    }
+    img {
+      display: block;
+      margin: 0 auto 30px auto;
+      border-radius: 12px;
+      width: 200px;
+      transition: transform 0.5s ease;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.05);
+    }
+    button {
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #cc0000;
+    }
+
+    /* 🔹 Error popup styling */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ff4d4d;
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      font-size: 20px;
+      z-index: 10;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      25% { transform: translate(-48%, -50%) rotate(1deg); }
+      50% { transform: translate(-52%, -50%) rotate(-1deg); }
+      75% { transform: translate(-48%, -50%) rotate(1deg); }
+      100% { transform: translate(-50%, -50%) rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <!--  Your custom image -->
+  <img src="download.png" alt="My Logo" id="logo">
+
+  <h2>YES OR NO?</h2>
+
+  <!-- ✅ YES / ❌ NO buttons -->
+  <button id="yesBtn">YES</button>
+  <button id="noBtn">NO</button>
+
+  <!-- ⚠️ Error popup -->
+  <div id="popup" class="popup">⚠️ SURE KANA?</div>
+
+  <script>
+    // 🔹 Replace with your YouTube video ID and start time
+    const videoId = "L86mpXkCHrY&"; // Change to your video
+    const startTime = 57; // seconds
+    const videoUrl = `https://www.youtube.com/watch?v=L86mpXkCHrY&list=RDL86mpXkCHrY&start_radio=57&t=${startTime}s`;
+
+    // ✅ YES button → opens YouTube
+    document.getElementById("yesBtn").addEventListener("click", () => {
+      window.open(videoUrl, "_blank");
+    });
+
+    // ❌ NO button → shows “Are you sure?” popup
+    document.getElementById("noBtn").addEventListener("click", () => {
+      const popup = document.getElementById("popup");
+      popup.style.display = "block";
+      setTimeout(() => popup.style.display = "none", 2000);
+    });
+
+    // Optional: clicking image also opens video
+    document.getElementById("logo").addEventListener("click", () => {
+      window.open(videoUrl, "_blank");
+    });
+  </script>
+</body>
+</html>
